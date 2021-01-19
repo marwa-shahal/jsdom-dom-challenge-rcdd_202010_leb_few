@@ -8,7 +8,7 @@ const pause= document.getElementById("pause");
 let counterdisplay=0;
 let counter = document.getElementById('counter');
 
-let intervalId=setInterval(add,1000)
+let internalId=setInterval(add,1000)
                       
 function add(){
     counterdisplay++;
@@ -30,9 +30,9 @@ pause.addEventListener('click',()=>{
         plus.disabled = true;
         minus.disabled = true;
         heart.disabled = true;
-        clearInterval(intervalId);
+        clearTimeout(internalId)
     }else{
-        setInterval(add,1000);
+        internalId=setInterval(add,1000);
         pause.innerText = "pause";
         plus.disabled = false;
         minus.disabled = false;
@@ -61,5 +61,6 @@ commentform.addEventListener('submit',(e) => {
   list.appendChild(p)
   document.getElementById("comment-input").value=""
 })
+
 
 
